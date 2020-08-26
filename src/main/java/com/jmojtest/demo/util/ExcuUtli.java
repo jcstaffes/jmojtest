@@ -5,13 +5,13 @@ import java.io.*;
 public class ExcuUtli {
     public static String[] Exec(String FileID,String testcase) throws IOException,InterruptedException{
         Runtime rt = Runtime.getRuntime();//获得Runtime对象
-        String arr[] = {"CLASSPATH=D:\\warehouse","Path=C:\\Program Files\\Java\\jdk-12.0.2\\bin"};//执行exec时的环境变量
+//        String arr[] = {"CLASSPATH=D:\\warehouse","Path=C:\\Program Files\\Java\\jdk-12.0.2\\bin"};//执行exec时的环境变量
         long startTime = System.currentTimeMillis();    //获取开始时间
         long startMem=rt.freeMemory();
-//        Process pr = rt.exec("javac Main.java && java Main");
+        Process pr = rt.exec("javac Main.java && java Main");
         //exec方法第一个参数是执行的命令，第二个参数是环境变量，第三个参数是工作目录
 
-        Process pr = rt.exec("cmd /c javac Main.java && java Main", arr, new File("D:\\warehouse"));
+//        Process pr = rt.exec("cmd /c javac Main.java && java Main", arr, new File("D:\\warehouse"));
         //获取输出流并转换成缓冲区
         BufferedWriter bout = new BufferedWriter(new OutputStreamWriter(pr.getOutputStream()));
         bout.write(testcase);//输出数据
